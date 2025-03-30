@@ -1,11 +1,11 @@
 {
-    "name": "megavnet/ophim-theme-toro",
-    "description": "Ophim's toro theme",
+    "name": "HuyUDB24CC149/ophim-theme-toro-fix",
+    "description": "Ophim's toro fix theme",
     "type": "library",
     "authors": [
         {
-            "name": "ophimcms",
-            "email": "opdlnf01@gmail.com"
+            "name": "HuyUDB24CC149",
+            "email": "your-email@example.com"
         }
     ],
     "require": {
@@ -14,15 +14,15 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ophim\\ThemeToro\\": "src/",
-            "Ophim\\ThemeToro\\Database\\Factories\\": "database/factories/",
-            "Ophim\\ThemeToro\\Database\\Seeders\\": "database/seeders/"
+            "Ophim\\ThemeToroFix\\": "src/",
+            "Ophim\\ThemeToroFix\\Database\\Factories\\": "database/factories/",
+            "Ophim\\ThemeToroFix\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Ophim\\ThemeToro\\ThemeToroServiceProvider"
+                "Ophim\\ThemeToroFix\\ThemeToroFixServiceProvider"
             ]
         }
     },
