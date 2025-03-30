@@ -1,0 +1,30 @@
+{
+    "name": "megavnet/ophim-theme-toro",
+    "description": "Ophim's toro theme",
+    "type": "library",
+    "authors": [
+        {
+            "name": "ophimcms",
+            "email": "opdlnf01@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^6|^7|^8|^10|^11"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ophim\\ThemeToro\\": "src/",
+            "Ophim\\ThemeToro\\Database\\Factories\\": "database/factories/",
+            "Ophim\\ThemeToro\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ophim\\ThemeToro\\ThemeToroServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
