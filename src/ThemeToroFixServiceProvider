@@ -1,13 +1,13 @@
 <?php
 
-namespace Ophim\ThemeToro;
+namespace Ophim\ThemeToroFix;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
-class ThemeToroServiceProvider extends ServiceProvider
+class ThemeToroFixServiceProvider extends ServiceProvider
 {
     public function register()
     {
@@ -16,7 +16,7 @@ class ThemeToroServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        view()->composer('themes::themetoro.layout', function ($view) {
+        view()->composer('themes::themetorofix.layout', function ($view) {
             $composer_file = __DIR__ . '/../composer.json';
             $version = '1.0.0';
             if (file_exists($composer_file) && ($composer = json_decode(file_get_contents($composer_file), true))) {
@@ -24,7 +24,7 @@ class ThemeToroServiceProvider extends ServiceProvider
             }
             $view->with('theme_version', $version);
         });
-        view()->composer('themes::themetoro.inc.header', function ($view) {
+        view()->composer('themes::themetorofix.inc.header', function ($view) {
             $title = setting('site_homepage_title', config('app.name'));
             $logo = setting('site_logo', '');
             $brand = setting('site_brand', '');
@@ -36,14 +36,14 @@ class ThemeToroServiceProvider extends ServiceProvider
             $view->with('brand', $brand);
             $view->with('title', $title);
         });
-        view()->composer('themes::themetoro.inc.header', function ($view) {
+        view()->composer('themes::themetorofix.inc.header', function ($view) {
             $menu = Cache::remember('header_menu', setting('site_cache_ttl', 5 * 60), function () {
                 $menu = \App\Models\Menu::getTree()->toArray();
                 return $menu;
             });
             $view->with('menu', $menu);
         });
-        view()->composer('themes::themetoro.inc.rightbar', function ($view) {
+        view()->composer('themes::themetorofix.inc.rightbar', function ($view) {
             $lists = get_theme_option('hotest');
             $data = [];
             foreach ($lists as $list) {
@@ -63,7 +63,7 @@ class ThemeToroServiceProvider extends ServiceProvider
 
             $view->with('tops', $data);
         });
-        view()->composer('themes::themetoro.inc.footer', function ($view) {
+        view()->composer('themes::themetorofix.inc.footer', function ($view) {
             $tags = Cache::remember('footer_tags', setting('site_cache_ttl', 5 * 60), function () {
                 $order_by = get_theme_option('footer_tags_order_by', 'views_week');
                 $limit = get_theme_option('footer_tags_limit', 50);
@@ -81,18 +81,18 @@ class ThemeToroServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views/', 'themes');
 
         $this->publishes([
-            __DIR__ . '/../resources/assets' => public_path('themes/toro')
-        ], 'toro-assets');
+            __DIR__ . '/../resources/assets' => public_path('themes/torofix')
+        ], 'torofix-assets');
     }
 
     protected function setupDefaultThemeCustomizer()
     {
         config(['themes' => array_merge(config('themes', []), [
-            'toro' => [
-                'name' => 'Theme Toro',
-                'author' => 'support@megavn.net',
-                'package_name' => 'megavnet/ophim-theme-toro',
-                'publishes' => ['toro-assets'],
+            'torofix' => [
+                'name' => 'Theme Toro Fix',
+                'author' => 'HuyUDB24CC149',
+                'package_name' => 'HuyUDB24CC149/ophim-theme-toro-fix',
+                'publishes' => ['torofix-assets'],
                 'preview_image' => '',
                 'options' => [
                     [
